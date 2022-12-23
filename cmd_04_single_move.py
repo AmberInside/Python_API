@@ -39,8 +39,8 @@ class robot_mode_data(Structure):                                   # ctypes str
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)                # Standard socket processes
 s.bind(("0.0.0.0", 12321))
-payloadS = robot_joint_position(4, 44, 114514,
-                                2, 0, 0, 0, 0, 0, 0, 0, 1)          # Fill struct for send with numbers
+payloadS = robot_joint_position(4, 44, 114514,						# Fill struct for send with numbers
+                                2, 0, 0, 0, 0, 0, 0, 0, 1)          # Unit of angle: rad, 1 rad ≈ 57.296°
 s.sendto(payloadS, (IP_ADDR, 25001))                                # Default port is 25001
 print("Sending: cmd_no={:d}, "
       "length={:d}, counter={:d},".format(payloadS.cmd_no,
