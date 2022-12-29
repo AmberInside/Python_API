@@ -10,11 +10,11 @@ We recommend you getting started with  [cmd_04_single_move.py](https://github.co
 
 Make sure you have read our [UDP protocol](https://github.com/MrAsana/AMBER_B1_ROS2/wiki/SDK-&-API---UDP-Ethernet-Protocol--for-controlling-&-programing) .
 
-#### Set IP address
+### Set IP address
 
 Set your ROS Master's  `IP_ADDR ` in [Line 11](https://github.com/Muya369/Python_API/blob/main/cmd_04_single_move.py#L11) .
 
-#### Data structures(Ctype structure)
+### Data structures(ctype structure)
 
 We will explain these later.
 
@@ -22,7 +22,7 @@ We use Python `ctypes` structure to make everything matches C++ API, so `c_uint1
 
 `_pack_ = 1` is for override structure align, no need to change in normal situation.
 
-#### Prepare socket connection
+### Prepare socket connection
 
 ```python
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)               
@@ -31,7 +31,7 @@ s.bind(("0.0.0.0", 12321))
 
 These are standard socket processes, no need to change in normal situation.
 
-#### Prepare control data
+### Prepare control data
 
 Modify position and angles in in [Line 42](https://github.com/Muya369/Python_API/blob/main/cmd_04_single_move.py#L42) :
 
@@ -62,7 +62,7 @@ payloadS = robot_joint_position(4, 44, 114514,0,0,0,1.57,0,-1.57,0,0,1)
 | c_float  | pos7    | 0       | Joint target position, which may use in future , irrelevant right now |
 | c_float  | time    | 1       | Duration time to target, from current position to next position |
 
-#### Send data by socket
+### Send data by socket
 
 ```python
 s.sendto(payloadS, (IP_ADDR, 25001))
@@ -70,9 +70,9 @@ s.sendto(payloadS, (IP_ADDR, 25001))
 
 Default port is 25001, no need to change in normal situation.
 
-**If everything is set up correctly, when you send these data by socket, joint 4 and joint 6 will rotate 90°(and -90° for joint 6), make sure the robot workspace is clear.**
+If everything is set up correctly, when you send these data by socket, joint 4 and joint 6 will rotate 90°(and -90° for joint 6), **make sure the robot workspace is clear.**
 
-#### Prepare receive data from socket
+### Prepare receive data from socket
 
 ```python
 data, addr = s.recvfrom(1024) 
@@ -97,7 +97,7 @@ print("Received: cmd_no={:d}, length={:d}, "
 | c_uint32 | counter | 114514  | Correspondence code          |
 | c_uint8  | respond | 1       | Flag, 0: Failure，1: Success |
 
-#### Terminal output for example
+### Terminal output for example
 
 ```bash
 Sending: cmd_no=4, length=44, counter=114514,
