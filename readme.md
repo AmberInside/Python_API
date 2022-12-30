@@ -1,5 +1,8 @@
 # Python API
 
+* All the python code are based on AMBER_B1_ROS2 service. About how to launch the B1 ROS2 service, try the following shell scripts.*
+ https://github.com/MrAsana/AMBER_B1_ROS2/wiki/Launch-AMBER-Robot-Studio--backend-service--to--show-log-step-by-step '
+
 This repository provides templates for the development of the Python examples based on the AMBER UDP protocol, the number in the file name is the command number in UDP protocol.
 
 UDP protocol link：https://github.com/MrAsana/AMBER_B1_ROS2/wiki/SDK-&-API---UDP-Ethernet-Protocol--for-controlling-&-programing .
