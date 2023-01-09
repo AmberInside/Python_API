@@ -8,7 +8,7 @@ Ref: https://github.com/MrAsana/AMBER_B1_ROS2/wiki/SDK-&-API---UDP-Ethernet-Prot
 C++ version:  https://github.com/MrAsana/C_Plus_API/tree/master/amber_gui_4_node
      
 '''
-IP_ADDR = "192.168.51.128"                                           # ROS master's IP address
+IP_ADDR = "192.168.51.27"                                           # ROS master's IP address
 
 
 class robot_joint_position(Structure):                              # ctypes struct for send
@@ -40,10 +40,18 @@ class robot_mode_data(Structure):                                   # ctypes str
                 ("speed_6", c_float),
                 ("speed_7", c_float),
                 ("speed_8", c_float),
-                ("X_Y_Z_pos", c_float),
-                ("R_P_Y_pos", c_float),
-                ("X_Y_Z_speed", c_float),
-                ("R_P_Y_speed", c_float),
+                ("X_pos", c_float),
+                ("Y_pos", c_float),
+                ("Z_pos", c_float),
+                ("Roll_pos", c_float),
+                ("Pitch_pos", c_float),
+                ("Yaw_pos", c_float),
+                ("X_speed", c_float),
+                ("Y_speed", c_float),
+                ("Z_speed", c_float),
+                ("Roll_speed", c_float),
+                ("Pitch_speed", c_float),
+                ("Yaw_speed", c_float),
                 ("Arm_Angle", c_float),
                 ]
 
@@ -68,6 +76,8 @@ print("pos1={:f} pos2={:f} pos3={:f} pos4={:f} pos5={:f} pos6={:f} pos7={:f} pos
 print("speed1={:f} speed2={:f} speed3={:f} speed4={:f} speed5={:f} speed6={:f} speed7={:f} speed8={:f}"
       .format(payloadR.speed_1, payloadR.speed_2, payloadR.speed_3, payloadR.speed_4
               , payloadR.speed_5, payloadR.speed_6, payloadR.speed_7, payloadR.speed_8,))
-print("X_Y_Z_pos={:f} R_P_Y_pos={:f} X_Y_Z_speed={:f} R_P_Y_speed={:f} Arm_Angle={:f}"
-      .format(payloadR.X_Y_Z_pos, payloadR.R_P_Y_pos, payloadR.X_Y_Z_speed, payloadR.R_P_Y_speed
-              , payloadR.Arm_Angle))
+print("X_pos={:f} Y_pos={:f} Z_pos={:f} R_pos={:f} P_pos={:f} Yaw_pos={:f} X_speed={:f} Y_speed={:f} Z_speed={:f} "
+      "Roll_speed={:f} Pitch_speed={:f} Yaw_speed={:f} Arm_Angle={:f}"
+      .format(payloadR.X_pos, payloadR.Y_pos, payloadR.Z_pos, payloadR.Roll_pos, payloadR.Pitch_pos,
+              payloadR.Yaw_pos, payloadR.X_speed, payloadR.Y_speed, payloadR.Z_speed, payloadR.Roll_speed,
+              payloadR.Pitch_speed,payloadR.Yaw_speed, payloadR.Arm_Angle))
